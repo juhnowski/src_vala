@@ -1,0 +1,6 @@
+"name":"discovery", "magic":"RM_475A4AA5",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"1.1",
+							"operation":{"name":"defaultparam","type":"request-response"},
+							"parameter":[],

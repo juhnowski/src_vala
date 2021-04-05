@@ -1,0 +1,7 @@
+"module":"discovery", "operation":{"name":"listserver","type":"request-response"},
+							"parameter": [],
+							"response": [
+											{"name":"signalserver", "type":"string"},
+											{"name":"streamserver", "type":"string"},
+											{"name":"eventserver",  "type":"string"}
+										]

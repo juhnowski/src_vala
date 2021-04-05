@@ -1,0 +1,33 @@
+"module":"discovery", "magic":"string",
+							"suuid":"UUID",
+							"duuid":"UUID",
+							"devicetype":"enum",
+							"operation":{"name":"setnetworkoption","type":"request-response"},
+							"parameter":[   {"name":"version","type":"string","value":1.0},
+											{"name":"webport","type":"integer","value":1},
+											{"name":"mediaport","type":"integer","value":1},
+											{"name":"mobileport","type":"integer","value":1},
+											{"ethernet":[
+															{"name":"ipmode",      "type":"enum","range":"0,1","value":1},
+															{"name":"address",     "type":"string","value":192.168.0.2},
+															{"name":"netmask",     "type":"string","value":255.255.255.0},
+															{"name":"gateway",     "type":"string","value":192.168.0.1},
+															{"name":"primarydns",  "type":"string","value":?},
+															{"name":"alternatdns", "type":"string","value":?},
+															{"name":"mac",		   "type":"string","value":'??:??:??:??:??'}
+														]
+											 },
+											 {"wifi":   [
+															{"name":"ipmode",      "type":"enum","range":"0,1","value":1},
+															{"name":"address",     "type":"string","value":192.168.0.2},
+															{"name":"netmask",     "type":"string","value":255.255.255.0},
+															{"name":"gateway",     "type":"string","value":192.168.0.1},
+															{"name":"primarydns",  "type":"string","value":?},
+															{"name":"alternatdns", "type":"string","value":?},
+															{"name":"mac",		   "type":"string","value":'??:??:??:??:??'}
+														]
+											 }
+										],
+							"reponse":  [
+											{"name":"return","type":"enum",,"value":000}
+										]

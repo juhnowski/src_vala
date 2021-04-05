@@ -1,0 +1,8 @@
+Тестируем:
+1) Запустить mbdisp/mbdisp
+2) Запустить клиент client/client
+3) В клиенте вызвать
+./EXEC!/home/ilya/mb/mbgui/mbgui
+затем
+./STOP!/home/ilya/mb/mbgui/mbgui
+- закрывается с задержкой

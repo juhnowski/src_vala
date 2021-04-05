@@ -1,0 +1,7 @@
+"module":"certificate", "session"  : "98190dc2-0890-4ef8-ac9a-5940995e6119",
+								"operation": {"name":"verify","type":"request-response"},
+								"parameter": [{"name":"s0", "type":"string","value":"MD5"}],
+								"response" : [  { "name":"return", "type":"boolean"},
+												{ "name":"errorcode","type":"integer"},
+												{ "name":"errorcause","type":"string"}
+											 ]

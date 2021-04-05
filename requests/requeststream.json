@@ -1,0 +1,10 @@
+"module":"certificate",   "session":"98190dc2-0890-4ef8-ac9a-5940995e6119",
+								"operation": {"name":"requeststream","type":"request-response"},
+								"parameter": [  {"name":"streamtype","type":"enum","value":1},
+												{"name":"streamname","type":"string","range":"1-100","value":'Stream'},
+												{"name":"csrc","type":"string","range":"0-64","value":'?'},
+												{"name":"ssrc","type":"integer","range":"0-255","value":1}
+											 ],
+								"response" : [  {"name":"return","type":"boolean"},
+												{"name":"address","type":"string"}
+											 ]

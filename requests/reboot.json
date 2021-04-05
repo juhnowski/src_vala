@@ -1,0 +1,7 @@
+"module":"discovery", "magic":"RM_475A4AA5",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"1.1",
+							"operation":{"name":"reboot","type":"request-response"},
+							"parameter":[],
+							"response" :[]

@@ -1,0 +1,11 @@
+"module":"mediastreammodel",   "session":"98190dc2-0890-4ef8-ac9a-5940995e6119",
+									"operation": {"name":"mediaregistefailack","type":"notification"},
+									"parameter": [
+													{"name":"csrc","type":"string","range":"0-64","value":'qwe'},
+													{"name":"pt","type":"char","value":'3'},
+													{"name":"ssrc","type":"integer","range":"0-65535","value":123},
+													{"name":"errorcode","type":"enum","value":?},
+													{"name":"errorcause","type":"string", "range":"1-100","value":'1'},
+													{"name":"streamname","type":"string","range":"1-100","value":'1'},
+													{"name":"ipandport","type":"string","range":"1-32","value":1}
+												 ]

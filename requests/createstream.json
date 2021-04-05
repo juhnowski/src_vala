@@ -1,0 +1,11 @@
+"module":"certificate",   "session":"98190dc2-0890-4ef8-ac9a-5940995e6119",
+								"operation": {"name":"createstream","type":"request-response"},
+								"parameter": [  {"name":"vision","type":"string","range":"1-32"","value":'?'},
+												{"name":"devtype","type":"integer","range":"1-32"","value":1},
+												{"name":"streamname","type":"string","range":"1-32"","value":'Stream'},
+												{"name":"ipandport","type":"string","range":"1-32"","value":'?'},
+											 ],
+								"response" : [  { "name":"return", "type":"boolean"},
+												{ "name":"errorcode","type":"integer"},
+												{ "name":"errorcause","type":"string","range":"1-100"}
+											 ]

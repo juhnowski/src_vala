@@ -1,0 +1,14 @@
+"module":"discovery", "operation":{"name":"listdevice","type":"request-response"},
+							"parameter":[
+											{"name":"user","type":"string","value":'ilya'},
+											{"name":"password","type":"string","value":'1'}
+										],
+							"response": [
+											{"name":"return", "type":"enum"},
+											{"device array":
+												[
+													{"name":"device", "type":"string"},
+													{"name":"online", "type":"boolean"}	
+												]
+											}
+										]

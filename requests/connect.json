@@ -1,0 +1,28 @@
+"module":"certificate",   "session":{"type":"string"},
+								"operation":{"name":"connect", "type":"request-response"},
+								"parameter":[
+												{"name":"mode",	  "type":"enum","value":1},
+												{"name":"cid",	  "type":"integer","value":01},
+												{"name":"dsno",	  "type":"string","value":'0'},
+												{"name":"devname","type":"string","value":'Max'},
+												{"name":"devclass","type":"integer","value":0},
+												{"name":"pro", "type":"string","value":'1.1'},
+												{"name":"mac", "type":"object","value":?},
+												{"name":"dlip[N]", "type":"array","value":?},
+												{"name":"dlp[N]","type":"array","value":?},
+												{"name":"channel","type":"integer","value":1},
+												{"name":"carnum","type":"string","value":'1'},
+												{"name":"uk","type":"string","value":'?'},
+												{"name":"autono","type":"string","value":'?'},
+												{"name":"autocar","type":"string","value":'?'},
+												{"name":"lineno","type":"string","value":'?'},
+												{"name":"uno","type":"string","value":'?'},
+												{"name":"uname","type":"string","value":'ilya'},
+												{"name":"net","type":"integer","value":0},
+												{"name":"cpn","type":"string","value":'qwe'},
+											],
+								"response": [
+												{"name":"s0","type":"string"},
+												{"name":"errcode","type":"integer"},
+												{"name":"errorcause","type":"string"}
+											]

@@ -1,0 +1,4 @@
+"module":"certificate",   "session":"98190dc2-0890-4ef8-ac9a-5940995e6119",
+								"operation": {"name":"describe","type":"request-response"},
+								"parameter": [{"name":"xml","type":"string"}],
+								"response" : [{"name":"xml","type":"string"}]

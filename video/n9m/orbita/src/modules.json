@@ -1,0 +1,968 @@
+{"modules":[
+	{   "name":"discovery", "magic":"string",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"enum",
+							"operation":{"name":"probe","type":"request-response"},
+							"parameter":[   {"name":"version","type":"string"}
+										],
+							"response":[
+											{"name":"return","type":"enum"},
+											{"name":"version","type":"string"},
+											{"name":"devicename","type":"string"},
+											{"name":"alivenet","type":"enum"},
+											{"name":"webport","type":"integer"},
+											{"name":"mediaport","type":"integer"},
+											{"name":"mobileport","type":"integer"},
+											{"ethernet":[
+															{"name":"ipmode",      "type":"enum","range":"0,1"},
+															{"name":"address",     "type":"string"},
+															{"name":"netmask",     "type":"string"},
+															{"name":"gateway",     "type":"string"},
+															{"name":"primarydns",  "type":"string"},
+															{"name":"alternatdns", "type":"string"},
+															{"name":"mac",		   "type":"string"}
+														]
+											 },
+											 {"wifi":   [
+															{"name":"ipmode",      "type":"enum","range":"0,1"},
+															{"name":"address",     "type":"string"},
+															{"name":"netmask",     "type":"string"},
+															{"name":"gateway",     "type":"string"},
+															{"name":"primarydns",  "type":"string"},
+															{"name":"alternatdns", "type":"string"},
+															{"name":"mac",		   "type":"string"}
+														]
+											 },
+											 {"name":"dsno",   "type":"string"},
+											 {"name":"carnum", "type":"string"},
+											 {"name":"autono", "type":"string"},
+											 {"name":"autocar","type":"string"},
+											 {"cpn":"string",  "type":"string"}
+										]
+	},
+	{   "name":"discovery", "magic":"string",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"enum",
+							"operation":{"name":"setnetworkoption","type":"request-response"},
+							"parameter":[   {"name":"version","type":"string"},
+											{"name":"webport","type":"integer"},
+											{"name":"mediaport","type":"integer"},
+											{"name":"mobileport","type":"integer"},
+											{"ethernet":[
+															{"name":"ipmode",      "type":"enum","range":"0,1"},
+															{"name":"address",     "type":"string"},
+															{"name":"netmask",     "type":"string"},
+															{"name":"gateway",     "type":"string"},
+															{"name":"primarydns",  "type":"string"},
+															{"name":"alternatdns", "type":"string"},
+															{"name":"mac",		   "type":"string"}
+														]
+											 },
+											 {"wifi":   [
+															{"name":"ipmode",      "type":"enum","range":"0,1"},
+															{"name":"address",     "type":"string"},
+															{"name":"netmask",     "type":"string"},
+															{"name":"gateway",     "type":"string"},
+															{"name":"primarydns",  "type":"string"},
+															{"name":"alternatdns", "type":"string"},
+															{"name":"mac",		   "type":"string"}
+														]
+											 }
+										],
+							"reponse":  [
+											{"name":"return","type":"enum"}
+										]
+	},
+	{   "name":"discovery", "magic":"string",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"enum",
+							"operation":{"name":"reboot","type":"request-response"},
+							"parameter":[],
+							"response" :[]
+	},
+	{   "name":"discovery", "magic":"string",
+							"suuid":"string",
+							"duuid":"string",
+							"devicetype":"enum",
+							"operation":{"name":"defaultparam","type":"request-response"},
+							"parameter":[],
+							"response" :[]
+	},
+	{   "name":"discovery", "operation":{"name":"listdevice","type":"request-response"},
+							"parameter":[
+											{"name":"user","type":"string"},
+											{"name":"password","type":"string"}
+										],
+							"response": [
+											{"name":"return", "type":"enum"},
+											{"device array":
+												[
+													{"name":"device", "type":"string"},
+													{"name":"online", "type":"boolean"}	
+												]
+											}
+										]
+	},
+	{   "name":"discovery", "operation":{"name":"listserver","type":"request-response"},
+							"parameter": [],
+							"response": [
+											{"name":"signalserver", "type":"string"},
+											{"name":"streamserver", "type":"string"},
+											{"name":"eventserver",  "type":"string"}
+										]
+	},
+	{
+		"name":"certificate",   "session":{"type":"string"},
+								"operation":{"name":"connect", "type":"request-response"},
+								"parameter":[
+												{"name":"mode",	  "type":"enum"},
+												{"name":"cid",	  "type":"integer"},
+												{"name":"dsno",	  "type":"string" },
+												{"name":"devname","type":"string"},
+												{"name":"devclass","type":"integer"},
+												{"name":"pro", "type":"string"},
+												{"name":"mac", "type":"object"},
+												{"name":"dlip[N]", "type":"array"},
+												{"name":"dlp[N]","type":"array"},
+												{"name":"channel","type":"integer"},
+												{"name":"carnum","type":"string"},
+												{"name":"uk","type":"string"},
+												{"name":"autono","type":"string"},
+												{"name":"autocar","type":"string"},
+												{"name":"lineno","type":"string"},
+												{"name":"uno","type":"string"},
+												{"name":"uname","type":"string"},
+												{"name":"net","type":"integer"},
+												{"name":"cpn","type":"string"},
+												{"name":"eid","type":"string"}
+											],
+								"response": [
+												{"name":"s0","type":"string"},
+												{"name":"errcode","type":"integer"},
+												{"name":"errorcause","type":"string"}
+											]
+	},
+
+	{
+		"module":"certificate", "session"  : {"type":"string"},
+								"operation": {"name":"verify","type":"request-response"},
+								"parameter": [{"name":"s0", "type":"string"}],
+								"response" : [  { "name":"return", "type":"boolean"},
+												{ "name":"errorcode","type":"integer"},
+												{ "name":"errorcause","type":"string"}
+											 ]
+	},
+
+	{
+		"module":"certificate", "session"  : {"type":"string"},
+								"operation": {"name":"login","type":"request-response"}, 
+								"parameter": [  {"name":"user","type":"string"},
+												{"name":"passwd","type":"string"},
+												{"name":"mac","type":"string"},
+												{"name":"cid","type":"integer"},
+												{"name":"logintype","type":"integer"}
+											 ],
+								"response" : [  { "name":"return", "type":"boolean"},
+												{ "name":"errorcode","type":"integer"},
+												{ "name":"errorcause","type":"string"},
+												{ "name":"dsn0","type":"string"},
+												{ "name":"devname","type":"string"},
+												{ "name":"channel","type":"integer"},
+												{ "name":"uid","type":"string"},
+												{ "name":"alarmin","type":"integer"},
+												{ "name":"type","type":"string"},
+												{ "name":"devclass","type":"integer"},
+												{ "name":"pr0","type":"string"},
+												{ "name":"carnum","type":"string"},
+												{ "name":"level","type":"integer"},
+												{ "name":"mtype","type":"integer"},
+												{ "name":"stype","type":"integer"},
+												{ "name":"cpn","type":"string"},
+											 ]
+	},
+
+	{ "module":"certificate",   "session":{"type":"string"},
+								"operation": {"name":"describe","type":"request-response"},
+								"parameter": [{"name":"xml","type":"string"}],
+								"response" : [{"name":"xml","type":"string"}]
+    },
+	{ "module":"certificate",   "session":{"type":"string"},
+								"operation": {"name":"keepalive","type":"request-response"},
+								"parameter": [],
+								"response" : []
+    },
+	{"module":"certificate",   "session":{"type":"string"},
+								"operation": {"name":"requeststream","type":"request-response"},
+								"parameter": [  {"name":"streamtype","type":"enum"},
+												{"name":"streamname","type":"string","range":"1-100"},
+												{"name":"csrc","type":"string","range":"0-64"},
+												{"name":"ssrc","type":"integer","range":"0-255"}
+											 ],
+								"response" : [  {"name":"return","type":"boolean"},
+												{"name":"address","type":"string"}
+											 ]
+	},
+
+	{"module":"certificate",   "session":{"type":"string"},
+								"operation": {"name":"createstream","type":"request-response"},
+								"parameter": [  {"name":"vision","type":"string","range":"1-32"},
+												{"name":"devtype","type":"integer","range":"1-32"},
+												{"name":"streamname","type":"string","range":"1-32"},
+												{"name":"ipandport","type":"string","range":"1-32"},
+											 ],
+								"response" : [  { "name":"return", "type":"boolean"},
+												{ "name":"errorcode","type":"integer"},
+												{ "name":"errorcause","type":"string","range":"1-100"}
+											 ]
+	},
+
+	{"module":"mediastreammodel",   "session":{"type":"string"},
+									"operation": {"name":"controlstream","type":"request-response"},
+									"parameter":[{"name":"csrc","type":"string","range":"0-64"},
+												 {"name":"ssrc","type":"integer", "range":"0-255"},
+												 {"name":"streamname","type":"string","range":"1-100"},
+												 {"name":"operation","type":"enum"}
+												],
+									"response": [ {"name":"return","type":"boolean"}
+												]
+	},
+	{"module":"mediastreammodel",   "session":{"type":"string"},
+									"operation": {"name":"mediaregistefailack","type":"notification"},
+									"parameter": [
+													{"name":"csrc","type":"string","range":"0-64"},
+													{"name":"pt","type":"char"},
+													{"name":"ssrc","type":"integer","range":"0-65535"},
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string", "range":"1-100"},
+													{"name":"streamname","type":"string","range":"1-100"},
+													{"name":"ipandport","type":"string","range":"1-32"}
+												 ]
+	},
+	{"module":"mediastreammodel",   "session":{"type":"string"},
+									"operation": {"name":"mediataskstart","type":"notification"},
+									"parameter": [
+													{"name":"csrc","type":"string","range":"0-64"},
+													{"name":"pt","type":"char"},
+													{"name":"ssrc","type":"integer","range":"0-65535"},
+													{"name":"streamname","type":"string","range":"1-100"},
+													{"name":"ipandport","type":"string","range":"1-32"}
+												 ]
+	},
+	{"module":"mediastreammodel",   "session":{"type":"string"},
+									"operation": {"name":"mediataskstop","type":"notification"},
+									"parameter": [
+													{"name":"csrc","type":"string","range":"0-64"},
+													{"name":"pt","type":"char"},
+													{"name":"ssrc","type":"integer","range":"0-65535"},
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string", "range":"1-100"},
+													{"name":"streamname","type":"string","range":"1-100"},
+													{"name":"ipandport","type":"string","range":"1-32"}
+												 ]
+	},
+	{"module":"evem", "3.4.1.1": [
+										{"io[n]":{"type":"object","range":"3.4.1.1.9"}},
+										{"mda[n]":{"type":"object","range":"3.4.1.1.10"}},
+										{"vsh[n]":{"type":"object","range":"3.4.1.1.11"}},
+										{"vlosta[n]":{"type":"object","range":"3.4.1.1.12"}},
+										{"hdd":{"type":"object","range":"3.4.1.1.13"}},
+										{"ipcon":{"type":"object","range":"3.4.1.1.14"}},
+										{"mdp[n]":{"type":"object","range":"3.4.1.1.15"}},
+										{"ps[n]":{"type":"object","range":"3.4.1.1.17"}},
+										{"pl[n]":{"type":"object","range":"3.4.1.1.18"}},
+										{"avd[n]":{"type":"object","range":"3.4.1.1.23"}},
+										{"avda[n]":{"type":"object","range":"3.4.1.1.24"}},
+										{"peap[n]":{"type":"array","range":"3.4.1.1.27"}},
+										{"pea[n]":{"type":"object","range":"3.4.1.1.29"}}
+									]
+},
+{"3.4.1.1.1": {
+			"ab":   [
+						{"type":"bt"}
+					]
+			}
+},
+{"3.4.1.1.2":{
+			"as":   [
+						{"type":"sot"},
+						{"type":"soid"}
+					]
+			}
+},
+{"3.4.1.1.3":{
+			"ae":
+					[
+						{"type":"bse"}
+					]
+			}
+},
+{"3.4.1.1.4":{
+			"ar":
+					[
+						{"type":"ch"},
+						{"type":"prs"},
+						{"type":"drs"},
+						{"type":"lf","range":"0-1"}
+					]
+				}
+},
+{"3.4.1.1.5":{
+			"apt":[
+					{"type":"t","range":"0,1,255"},
+					{"type":"v","range":"0-255"}
+				  ]
+			}
+},
+{"3.4.1.1.6":{
+			"afs":
+				[
+					{"type":"chl"}
+				]
+			}
+},
+{"3.4.1.1.7":{
+			"aplan":[
+						{"type":"rsi[7][16]","range":"3.4.1.1.16"}
+					]
+			}
+},
+{"3.4.1.1.8":{
+			"apro":[
+						{"type":"ab","range":"3.4.1.1.1"},
+						{"type":"as","range":"3.4.1.1.2"},
+						{"type":"ae","range":"3.4.1.1.3"},
+						{"type":"ar","range":"3.4.1.1.4"},
+						{"type":"afs","range":"3.4.1.1.6"},
+						{"type":"apt[n]","range":"3.4.1.1.5"},
+						{"type":"sps","range":"3.4.1.1.19"},
+						{"type":"pus","range":"3.4.1.1.20"},
+						{"type":"ftpup","range":"3.4.1.1.21"},
+						{"type":"laa","range":"3.4.1.1.22"},
+						{"type":"up","range":"0-2"}
+					]
+				}
+},
+{"3.4.1.1.9":{
+			"io":[
+					{"type":"en","range":"0-1"},
+					{"type":"ncno","range":"0-1"},
+					{"type":"ion","range":"eg:sensor1"},
+					{"type":"ios"},
+					{"type":"aplan","range":"3.4.1.1.7"},
+					{"type":"apro","range":"3.4.1.1.8"}
+				]
+			}
+},
+{"3.4.1.1.10":{
+			"mda":[
+					{"type":"aplan","range":"3.4.1.1.7"},
+					{"type":"apro","range":"3.4.1.1.8"}
+				  ]
+				}
+},
+{"3.4.1.1.11":{
+		"vsh":[
+				{"type":"aplan","range":"3.4.1.1.7"},
+				{"type":"apro", "range":"3.4.1.1.8"}
+			  ]
+			}
+},
+{"3.4.1.1.12":{
+		"vlosta":[
+					{"type":"apro","range":"3.4.1.1.8"}
+				 ]
+				}
+},
+{"3.4.1.1.13":{
+		"hdd":[
+				{"type":"invalid","range":"0-1"},
+				{"type":"hddfull","range":"0-1"},
+				{"type":"apro","range":"3.4.1.1.8"}
+			  ]
+			}
+},
+{"3.4.1.1.14":{
+				"ipcon":[
+							{"type":"en","range":"0-1"},
+							{"type":"apro","range":"3.4.1.1.8"}
+						]
+			}
+},
+{"3.4.1.1.15":{
+				"mdp":[
+						{"type":"en","range":"0-1"},
+						{"type":"sst","range":"0-8"},
+						{"type":"rgn"}
+					]
+				}
+},
+{"3.4.1.1.16":{
+				"rsi":[
+						{"type":"s"},
+						{"type":"e"}
+					]
+				}
+},
+{"3.4.1.1.17":{
+				"ps":[
+						{"type":"en","":"0-1"}
+						{"type":"sst","range":"0-2"}
+					]
+				}
+},
+{"3.4.1.1.18":{
+				"pl":[
+						{"type":"en","range":"0-1"}
+					]
+				}
+},
+{"3.4.1.1.19":{
+				"sps":[
+						{"type":"ch"}
+					]
+				}
+},
+{"3.4.1.1.20":{
+				"pus":[
+						{"type":"en","range":"0-1"},
+					]
+				}
+},
+{"3.4.1.1.21":{
+				"ftpup":[
+						{"type":"en","range":"0-1"},
+						]
+				}
+},
+{"3.4.1.1.22":{
+				"laa": [
+						{"type":"en","range":"0-255"}
+						]
+				}
+},
+{"3.4.1.1.23":{
+				"avd": [
+							{"type":"en","range":"0-1"},
+							{"type":"sst","range":"1-5"},
+							{"type":"ut","range":"1-20"}
+						]
+				}
+},
+{"3.4.1.1.24":{
+				"avda": [
+							{"type":"apro","range":"3.4.1.1.8"}
+						]
+				}
+},
+{"3.4.1.1.25":{
+				"pit":[
+						{"type":"x","range":"0-1028"},
+						{"type":"y","range":"0-768"}
+					]
+				}
+},
+{"3.4.1.1.26":{
+				"peaa":[
+						{"type":"drt","range":"0-1"}
+						{"type":"fbdd","range":"0-360"},
+						{"type":"pit[m]","range":"3.4.1.1.25"}
+						]
+				}
+},
+{"3.4.1.1.27":{
+				"peap":[
+						{"type":"en","range":"0-1"},
+						{"type":"sst","range":"1-5"},
+						{"type":"M(uint8_t)","range":"0-1"},
+						{"type":"peaa","range":"3.4.1.1.26"}
+						]
+				}
+},
+{"3.4.1.1.28":{
+				"pcs":[
+						{"type":"en","range":"0-1"},
+						{"type":"st","range":"0-3"},
+						{"type":"ec","range":"0-2"},
+						{"type":"ovd","range":"1-99"},
+						{"type":"uf"},
+						{"type":"st","range":"3.4.1.1.28.1,3.4.1.1.28.2"}
+						]
+				}
+},
+{"3.4.1.1.28.1":{
+				"bd":[
+						{"type":"bs"}
+					]
+				}
+},
+{"3.4.1.1.28.2":{
+				"db":[
+						{"type":"tok"},
+						{"type":"bs"}
+					]
+				}
+},
+{"3.4.1.1.29":{
+			"pea":[
+					{"type":"aplan","range":"3.4.1.1.7"},
+					{"type":"apro","range":"3.4.1.1.8"}
+				]
+			}
+},
+{"3.4.1.2": [
+		{"io[n]":{"type":"object","range":"3.4.1.1.9"}},
+		{"mda[n]":{"type":"object","range":"3.4.1.1.10"}},
+		{"vsh[n]":{"type":"object","range":"3.4.1.1.11"}},
+		{"vlosta[n]":{"type":"object","range":"3.4.1.1.12"}},
+		{"hdd":{"type":"object","range":"3.4.1.1.13"}},
+		{"ipcon":{"type":"object","range":"3.4.1.1.14"}},
+		{"mdp[n]":{"type":"object","range":"3.4.1.1.15"}},
+		{"ps[n]":{"type":"object","range":"3.4.1.1.17"}},
+		{"pl[n]":{"type":"object","range":"3.4.1.1.18"}},
+		{"avd[n]":{"type":"object","range":"3.4.1.1.23"}},
+		{"avda[n]":{"type":"object","range":"3.4.1.1.24"}},
+		{"peap[n]":{"type":"array","range":"3.4.1.1.27"}},
+		{"pea[n]":{"type":"object","range":"3.4.1.1.29"}}								]
+},					
+{"3.4.1.3":{
+	"session": {"type":"string"},
+					  "operation":{"name":"getalarmstatusinfo","type":"request-response"},
+					  "parameter":  [],
+					  "response" :  [{"errorcode":{"type":"enum"}},
+									 {"errorcause":{"type":"string","range":"1-100"}},
+									 {"md[n]":{"type":"array",  "range":"3.4.1.4.1"}},
+									 {"io[n]":{"type":"array",  "range":"3.4.1.4.2"}},
+									 {"stor[n]":{"type":"array","range":"3.4.1.4.3"}},
+									 {"st[n]":{"type":"array",  "range":"3.4.1.4.21"}},
+									 {"vs[n]":{"type":"array",  "range":"3.4.1.4.4"}},
+									 {"vl[n]":{"type":"array",  "range":"3.4.1.4.5"}},
+									 {"cat[n]":{"type":"array", "range":"3.4.1.4.6"}},
+									 {"vrat[n]":{"type":"array","range":"3.4.1.4.7"}},
+									 {"sp[n]":{"type":"array",  "range":"3.4.1.4.9"}},
+									 {"lv[n]":{"type":"array",  "range":"3.4.1.4.10"}},
+									 {"seri":{"type":"array",   "range":"3.4.1.4.22"}},
+									 {"acc[n]":{"type":"array", "range":"3.4.1.4.24"}},
+									 {"aio[n]":{"type":"array", "range":"3.4.1.4.25"}},
+									 {"ex[n]":{"type":"array",  "range":"3.4.1.4.26"}},
+									 {"ra[n]":{"type":"array",  "range":"3.4.1.4.27"}},
+									 {"tri[n]":{"type":"array", "range":"3.4.1.4.28"}},
+									 {"stu":{"type":"array",    "range":"3.4.1.4.29"}},
+									 {"car[n]":{"type":"array", "range":"3.4.1.4.30"}},
+									 {"gdsl[n]":{"type":"array","range":"3.4.1.4.31"}},
+									 {"f":{"type":"array",	    "range":"3.4.1.4.32"}},
+									 {"sd":{"type":"array",		"range":"3.4.1.4.33"}},
+									 {"oil":{"type":"array",	"range":"3.4.1.4.36"}}
+									]
+	}
+},
+{"3.4.1.4":	{"session":{"type":"string"},
+						"operation":{"name":"sendalarmstatusinfo","type":"notification"},
+						"parameter":[{"to":{"type":"integer"}},
+									 {"md[n]":{"type":"array","range":"3.4.1.4.1"}},
+									 {"io[n]":{"type":"array","range":"3.4.1.4.2"}},
+									 {"stor[n]":{"type":"array","range":"3.4.1.4.3"}},
+									 {"st[n]":{"type":"array","range":"3.4.1.4.21"}},
+									 {"vs[n]":{"type":"array","range":"3.4.1.4.4"}},
+									 {"vl[n]":{"type":"array","range":"3.4.1.4.5"}},
+									 {"cat[n]":{"type":"array","range":"3.4.1.4.6"}},
+									 {"vrat[n]":{"type":"array","range":"3.4.1.4.7"}},
+									 {"ur":{"type":"array","range":"3.4.1.4.8"}},
+									 {"sp[n]":{"type":"array","range":"3.4.1.4.9"}},
+									 {"lv[n]":{"type":"array","range":"3.4.1.4.10"}},
+									 {"seri":{"type":"array","range":"3.4.1.4.22"}},
+									 {"acc[n]":{"type":"array","range":"3.4.1.4.24"}},
+									 {"aio[n]":{"type":"array","range":"3.4.1.4.25"}},
+									 {"ex[n]":{"type":"array","range":"3.4.1.4.26"}},
+									 {"ra":{"type":"array","range":"3.4.1.4.27"}},
+									 {"tri[n]":{"type":"array","range":"3.4.1.4.28"}},
+									 {"stu":{"type":"array","range":"3.4.1.4.29"}},
+									 {"car[n]":{"type":"array","range":"3.4.1.4.30"}},
+									 {"gdsl":{"type":"array","range":"3.4.1.4.31"}},
+									 {"f":{"type":"array","range":"3.4.1.4.32"}},
+									 {"sd":{"type":"array","range":"3.4.1.4.33"}},
+									 {"inio":{"type":"array","range":"3.4.1.4.34"}},
+									 {"sr":{"type":"array","range":"3.4.1.4.35"}},
+									 {"oil":{"type":"array","range":"3.4.1.4.36"}}
+									]			
+	}
+},
+
+{"3.4.1.4.1":{
+			"md":[
+					{"type":"isa", "range":"0-1"},
+					{"type":"lch"}
+				]
+			}
+},
+{"3.4.1.4.2":{
+			"io":[
+					{"type":"isa","range":"0-1"},
+					{"type":"iono"},
+					{"type":"lch"},
+					{"type":"name"},
+					{"type":"nser"},
+					{"type":"use","range":"0-22"}
+				]
+			}
+},
+{"3.4.1.4.3":{
+			"stor":[
+					{"type":"en"},
+					{"type":"st[n]","range":"0-2"},
+					{"type":"sid[n]"}
+				]
+			}
+},
+{"3.4.1.4.4":{
+			"vs":[
+					{"type":"isa","range":"0-1"},
+					{"type":"lch","range":"0-2"}
+				]
+			}
+},
+{"3.4.1.4.5":{
+			"vl":[
+					{"type":"isa","range":"0-1"},
+					{"type":"lch","range":"0-2"}
+				]
+			}
+},
+{"3.4.1.4.6":{
+			"cat":[
+					{"type":"isa","range":"0-2"},
+					{"type":"iono"},
+					{"type":"channel"}
+				]
+			}
+},
+{"3.4.1.4.7":{
+			"vrat":[
+					{"type":"isa","range":"0-2"}
+				]
+			}
+},
+{"3.4.1.4.8":{
+			"ur":[
+					{"type":"isa","range":"0-1"},
+					{"type":"name"},
+					{"type":"nser"},
+					{"type":"ch"}
+				]
+			}
+},
+{"3.4.1.4.9":{
+			"speed":[
+					{"type":"isa","range":"0-1"},
+					{"type":"cur","range":"0-99999"},
+					{"type":"name"},
+					{"type":"nser"},
+					{"type":"ch"},
+					{"type":"at","range":"0-4"},
+					{"type":"i"}
+				]
+			}
+},
+{"3.4.1.4.10":{
+				"lv":[
+						{"type":"isa"},
+						{"type":"v"},
+						{"type":"isa"}
+					]
+				}
+},
+{"3.4.1.4.11":{
+				"obd":[
+						{"type":"refvalue(int)"},
+						{"type":"rpm(int)"},
+						{"type":"coolanttemp(int)"},
+						{"type":"oilpressure(float)"},
+						{"type":"keystatus(bool)"},
+						{"type":"accel(int)"},
+						{"type":"speed(int)"},
+						{"type":"battery(float)"},
+						{"type":"oilwear(float)"},
+						{"type":"oiltemp(float)"},
+						{"type":"enginenum(string)"}
+					]
+				}
+},
+
+
+
+
+
+
+
+{"3.4.1.4.12":{
+				"axis":[
+						{"type":"refvalue(int)"},
+						{"type":"datsrc(string)"},
+						{"type":"accel x(float)"},
+						{"type":"accel y(float)"},
+						{"type":"accel z(float)"},
+						{"type":"angular velocity x(float)"},
+						{"type":"angular velocity y(float)"},
+						{"type":"angular velocity z(float)"},
+					]
+				}
+				
+},
+{"3.4.1.4.13":{
+				"tirespress":[
+						{"type":"refvalue(string)"},
+						{"type":"datsrc(string)"},
+						{"type":"tnun(int)"},
+						{"type":{"tire":[
+									{"type":"id(sring)"},
+									{"type":"name(sring)"},
+									{"type":"press(float)"},
+									{"type":"temp(sring)"},
+									]
+								}
+						},
+					]
+				}
+				
+},
+{"3.4.1.4.14":{
+				"load":[
+						{"type":"refvalue(string)"},
+						{"type":"datsrc(string)"},
+						{"type":"axlesnum(int)"},
+						{"type":"loadlimit(int)"},
+						{"type":"left(int)"},
+						{"type":"right(int)"},
+						{"type":"total(int)"},
+					]
+				}
+				
+},
+{"3.4.1.4.15":{
+				"br":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.16":{
+				"revv":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.17":{
+				"shaep":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.18":{
+				"slide":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.19":{
+				"egnine":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.20":{
+				"idle":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"datsrc(string)"},
+						{"type":"data(object)"},
+					]
+				}
+				
+},
+{"3.4.1.4.21":{
+				"st":[
+						{"type":"sid"},
+						{"type":"st","range":"0-2"},
+						{"type":"e","range":"0-5"},
+					]
+				}
+				
+},
+{"3.4.1.4.22":{
+				"seri":[
+						{"type":"isa","range":"0-1"},
+						{"type":"name"},
+						{"type":"user"},
+						{"type":"ch"},
+						{"type":"sum"},
+						{"type":"s[sum]"},
+					]
+				}
+				
+},
+{"3.4.1.4.23":{
+				"s":[
+						{"type":"na"},
+						{"type":"an"},
+					]
+				}
+				
+},
+{"3.4.1.5":	{"session":{"type":"string"},
+						"operation":{"name":"sendalarminfo","type":"notification"},
+						"parameter":[{"alarmtype":{"type":"integer","range":"0-15"}},
+									 {"cmdtype":{"type":"enum","range":"0-2"}},
+									 {"alarmuid":{"type":"integer"}},
+									 {"alarmcount":{"type":"integer","range":"1-65635"}},
+									 {"triggertype":{"type":"enum","range":"0-1"}},
+									 {"continuetime":{"type":"integer"}},
+									 {"currenttime":{"type":"integer"}}],
+									 {"l":{"type":"integer","range":"0-15"}},
+			}
+},
+{"3.4.1.5.1":{{"channel":{"type":"integer","range":"1-32"}},
+				{"channelmask":{"type":"integer","range":"1-32"}},
+				{"lch[n]":{"type":"integer"}},
+				{"push":{"type":"integer","range":"1-32"}},
+				{"alarmname":{"type":"string"}},
+				{"ser":{"type":"string"}},
+			}	
+},
+{"3.4.1.5.2":{	{"storagetype":{"type":"enum","range":"0-2"}},
+				{"storageindex":{"type":"integer","range":"1-32"}},
+				{"errorcode":{"type":"integer","range":"1-32"}},
+				{"errordescription":{"type":"string","range":"1-100"}},
+				{"push":{"type":"integer","range":"0-1"}},									 
+			}	
+},
+{"3.4.1.5.3":{	{"sno":{"type":"char","range":"1-255"}},
+				{"alarmname":{"type":"string","range":"1-32"}},
+				{"ser":{"type":"string","range":"1-32"}},
+				{"lch[n]":{"type":"integer","range":"1-32"}},
+				{"push":{"type":"integer","range":"0-1"}},									 
+			}	
+},
+{"3.4.1.5.4":{	{"sno":{"type":"char","range":"1-255"}},
+				{"channel":{"type":"char"}},									 
+			}	
+},
+{"3.4.1.5.5":{	{"alarmname":{"type":"string","range":"1-32"}},
+				{"ser":{"type":"string","range":"1-32"}},
+				{"lch":{"type":"integer"}},
+				{"push":{"type":"integer","range":"0-1"}},									 
+			}	
+},
+{"3.4.1.5.6":{	{"atype":{"type":"integer","range":"0-1"}},
+				{"csp":{"type":"integer","range":"0-99999"}},
+				{"minsp":{"type":"integer","range":"0-99999"}},
+				{"maxsp":{"type":"integer","range":"0-99999"}},
+				{"alarmname":{"type":"string","range":"1-32"}},
+				{"ser":{"type":"string","range":"1-32"}},
+				{"lch":{"type":"integer"}},
+				{"push":{"type":"integer","range":"0-1"}},
+			}	
+},
+{"3.4.1.5.7":{	{"v":{"type":"integer","range":"100-7200"}},
+				{"push":{"type":"integer","range":"0-1"}},
+			}	
+},
+	{"module":"evem(eventmodel)",   "session":{"type":"string"},
+									"operation": {"name":"terminatealarm","type":"request-response"},
+									"parameter": [
+													{"name":"alarmtype","type":"integer","range":"0-9"},
+													{"name":"sno","type":"char"},
+													{"name":"st","type":"integer","range":"1-65535"},
+													{"name":"serial","type":"integer"},
+													{"name":"errorcause","type":"string", "range":"1-100"},
+													{"name":"streamname","type":"string","range":"1-100"},
+													{"name":"ipandport","type":"string","range":"1-32"}
+												],
+									"response":[
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string","range":"1-100"},
+													{"name":"serial","type":"integer"},
+												]
+	},
+
+	
+	
+	
+	{"module":"storm",   "session":{"type":"string"},
+									"operation": {"name":"getstorageinfo","type":"request-response"},
+									"response":[
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string","range":"1-100"},
+													{"name":"storagecount","type":"integer"},
+													{"name":"storagetype[storageindex]","type":"enum","range":"0-2"},
+													{"name":"storageunit[storageindex]","type":"enum","range":"0-4"},
+													{"name":"storageindex[storageindex]","type":"array"},
+													{"name":"storagestatus[storageindex]","type":"array","range":"0-9"},
+													{"name":"storagelastsize[storageindex]","type":"array"},
+													{"name":"storagetotalsize[storageindex]","type":"array"},
+													{"name":"storageposition[storageindex]","type":"array","range":"0-1"},
+												]
+	},
+	{"module":"storm",   "session":{"type":"string"},
+									"operation": {"name":"setcontrolstorage","type":"request-response"},
+									"parameter":[
+													{"name":"storageindex","type":"integer"},
+													{"name":"cmdtype","type":"enum","range":"0-4"},
+												],
+									"response":[
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string","range":"1-100"},
+													{"name":"storagetype","type":"enum"},
+													{"name":"cmdtype","type":"enum"},																
+												]
+	},
+	{"module":"storm",   "session":{"type":"string"},
+									"operation": {"name":"getcalendar","type":"request-response"},
+									"parameter":[
+													{"name":"calendartype","type":"enum","range":"1-3"},
+													{"name":"filetype","type":"integer"},
+													{"name":"channel","type":"integer","range":"1-32"},
+													{"name":"streamtype","type":"enum","range":"0-2"},
+													{"name":"querytime","type":"string"},
+													{"name":"serial","type":"integer"},
+												],
+									"response":[
+													{"name":"errorcode","type":"enum"},
+													{"name":"errorcause","type":"string","range":"1-100"},
+													{"name":"storagetype","type":"enum"},
+													{"name":"cmdtype","type":"enum"},																
+												]
+	},
+}
